@@ -1,0 +1,80 @@
+---
+title: "Coursera assignment - Fatality Analysis Reporting System"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{fars_functions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(farsfunctions)
+```
+
+
+The `fars_functions` package is part of the Coursera Cours "Mastering Software Development in R". 
+This package holds a collection of functions that read, manipulate and plot the Fatality Analysis Reporting System (FARS) data from the [National Highway Traffic Safety Administration] (https://www.nhtsa.gov/research-data/fatality-analysis-reporting-system-fars), a nationwide census providing the American public yearly data regarding fatal injuries suffered in motor vehicle traffic crashes.
+
+In the following this document shows you how to apply the fars functions.
+
+## Required packages
+library(dplyr)
+library(magrittr)
+library(tidyr)
+library(maps)
+library(graphics)
+
+## Data
+system.file("extdata/accident_2013.csv.bz2", package = "farsfunctions")
+
+## Function descriptions
+
+###`make_filename`
+This function takes the year as a string or integer as input and returns the filename of the fars data stored as csv files in the working directory. The return value of this function can be used as input for the `fars_read` function.
+
+```{r make_filename usage}
+
+make_filename(2015)
+make_filename("2015")
+```
+
+### `fars_read`
+The `fars_read` function reads the fars data stored as csv files into R and returns a tibble/dataframe
+You can customize the data to read with the filename argument.
+
+```{r fars_read usage}
+fars_read("accident_2015.csv.bz2")
+make_filename(2015) %>% fars_read()
+```
+
+### `fars_read_years`
+The `fars_read_years` function reads all fars data stored as csv in the working directory for the provided input years (taken as list or vector), and selects the month and year of the data, it is an ancillary function used by `fars_summarize_years`.
+
+```{r fars_read_year usage}
+fars_read_years(c(2013, 2014, 2015))
+fars_read_years(list(2013, 2014, 2015))
+
+```
+
+### `fars_summarize_years`
+The `fars_summarize_years` function takes a list or vector of years to summarize as input, reads the respective data from the working directory and returns a dataframe with the number of fatal injuries per month and year.
+
+```{r fars_summarize_years usage}
+fars_summarize_years(c(2013, 2014, 2015))
+fars_summarize_years(list(2013, 2014, 2015))
+```
+
+### `fars_map_state`
+The `fars_map_state`function takes the state numbe and year as inpuut and displays the place of the fata linjuries for the selected state and year on a map. 
+
+```{r fars_map_state usage}
+fars_map_state(01, 2013)
+
+```
