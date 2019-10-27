@@ -6,7 +6,7 @@
 
 #' Read the fars data into R
 #' This function reads fars data stored as csv files into the working directory
-#' and returns a tibble/dataframe
+#' and returns a tibble or dataframe
 #' if the data do not exist an error message is given
 #' You can customize the data to read with the \code{filename} argument
 
@@ -14,9 +14,11 @@
 #' @param return returns the data as tibble/dataframe or an error message if the filename does not exist
 
 #' @examples
+#' \dontrun{
 #' fars_read("accident_2015.csv.bz2")
 #' or make the filename with: \code{\link{make_filename}}
 #' make_filename(2015) %>% fars_read()
+#' }
 #' @seealso \code{\link{make_filename}}
 
 #' @export
@@ -64,7 +66,9 @@ make_filename <- function(year) {
 #' @seealso \code{\link{fars_summarize_years}}
 
 #' @examples
+#' \dontrun{
 #' fars_read_years(c(2013, 2014, 2015))
+#' }
 #' @export
 fars_read_years <- function(years) {
   lapply(years, function(year) {
@@ -89,7 +93,9 @@ fars_read_years <- function(years) {
 #' @return a dataframe containing the number of fatal injuries per month and year
 #' @seealso \code{\link{fars_read_years}}
 #' @examples
+#' \dontrun{
 #' fars_summarize_years(c(2013, 2014, 2015))
+#' }
 #' @export
 fars_summarize_years <- function(years) {
   dat_list <- fars_read_years(years)
@@ -112,8 +118,10 @@ fars_summarize_years <- function(years) {
 #' @seealso \code{\link{make_filename}}
 
 #' @examples
-#' fars_map_state(1, 2015)
-#' fars_map_state("1"," 2015")
+#' \dontrun{
+#' fars_map_state(01, 2015)
+#' fars_map_state("01", 2015)
+#' }
 
 #' @export
 fars_map_state <- function(state.num, year) {

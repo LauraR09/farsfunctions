@@ -22,8 +22,10 @@ This function displays the place of the fata linjuries by state and year on a ma
 an error message is given if the \code{state.num} is invalid
 }
 \examples{
-fars_map_state(1, 2015)
-fars_map_state("1"," 2015")
+\dontrun{
+fars_map_state(01, 2015)
+fars_map_state("01", 2015)
+}
 }
 \seealso{
 \code{\link{fars_read}}

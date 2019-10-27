@@ -18,7 +18,9 @@ Number of entries by month and year
 This function counts the number of fatal injuries by month and year
 }
 \examples{
+\dontrun{
 fars_summarize_years(c(2013, 2014, 2015))
+}
 }
 \seealso{
 \code{\link{fars_read_years}}

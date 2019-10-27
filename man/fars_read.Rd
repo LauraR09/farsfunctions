@@ -4,7 +4,7 @@
 \alias{fars_read}
 \title{Read the fars data into R
 This function reads fars data stored as csv files into the working directory
-and returns a tibble/dataframe
+and returns a tibble or dataframe
 if the data do not exist an error message is given
 You can customize the data to read with the \code{filename} argument}
 \usage{
@@ -18,14 +18,16 @@ fars_read(filename)
 \description{
 Read the fars data into R
 This function reads fars data stored as csv files into the working directory
-and returns a tibble/dataframe
+and returns a tibble or dataframe
 if the data do not exist an error message is given
 You can customize the data to read with the \code{filename} argument
 }
 \examples{
+\dontrun{
 fars_read("accident_2015.csv.bz2")
 or make the filename with: \\code{\\link{make_filename}}
 make_filename(2015) \%>\% fars_read()
+}
 }
 \seealso{
 \code{\link{make_filename}}

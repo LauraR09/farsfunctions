@@ -50,8 +50,9 @@ The `fars_read` function reads the fars data stored as csv files into R and retu
 You can customize the data to read with the filename argument.
 
 ```{r fars_read usage}
-fars_read("accident_2015.csv.bz2")
-make_filename(2015) %>% fars_read()
+library(magrittr)
+fars_read(system.file("extdata/accident_2013.csv.bz2", package = "farsfunctions"))
+#make_filename(2015) %>% fars_read()
 ```
 
 ### `fars_read_years`
@@ -67,14 +68,14 @@ fars_read_years(list(2013, 2014, 2015))
 The `fars_summarize_years` function takes a list or vector of years to summarize as input, reads the respective data from the working directory and returns a dataframe with the number of fatal injuries per month and year.
 
 ```{r fars_summarize_years usage}
-fars_summarize_years(c(2013, 2014, 2015))
-fars_summarize_years(list(2013, 2014, 2015))
+#fars_summarize_years(c(2013, 2014, 2015))
+#fars_summarize_years(list(2013, 2014, 2015))
 ```
 
 ### `fars_map_state`
-The `fars_map_state`function takes the state numbe and year as inpuut and displays the place of the fata linjuries for the selected state and year on a map. 
+The `fars_map_state`function takes the state number and year as inpuut and displays the place of the fata linjuries for the selected state and year on a map. 
 
 ```{r fars_map_state usage}
-fars_map_state(01, 2013)
+#fars_map_state(01, 2013)
 
 ```
