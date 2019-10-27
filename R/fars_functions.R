@@ -12,7 +12,8 @@
 
 #' @param filename a character string giving the filename to read
 #' @param return returns the data as tibble/dataframe or an error message if the filename does not exist
-
+#' @importfrom readr readcsv
+#' @importfrom dplyr tbl_df
 #' @examples
 #' \dontrun{
 #' fars_read("accident_2015.csv.bz2")
@@ -56,7 +57,9 @@ make_filename <- function(year) {
 #' if the \code{year} is invalid, an error message is given
 #' @param years list or vector of years
 
+#' @importFrom dplyr mutate
 #' @importFrom magrittr "%>%"
+#' @importFrom dplyr select
 
 #' @return a list of dataframes containing month and year of the fars data,
 #'  or a NULL if  the \code{year} is invalid
@@ -88,7 +91,11 @@ fars_read_years <- function(years) {
 #' This function counts the number of fatal injuries by month and year
 #' @param years a list or vector with the years to summarize
 #'
-
+#' @importFrom dplyr bind_rows
+#' @importFrom magrittr "%>%"
+#' @importFrom dplyr group_by
+#' @importFrom dplyr summarize
+#' @importFrom tidyr spread
 #' @importFrom magrittr "%>%"
 #' @return a dataframe containing the number of fatal injuries per month and year
 #' @seealso \code{\link{fars_read_years}}
@@ -111,7 +118,9 @@ fars_summarize_years <- function(years) {
 
 #' @param state.num integer or character variable giving the state number
 #' @param year integer or character variable giving the year
-
+#' @importFrom maps map
+#' @importFrom dplyr filter_
+#' @importFrom graphics points
 #' @return None
 
 #' @seealso \code{\link{fars_read}}
